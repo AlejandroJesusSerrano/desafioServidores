@@ -2,9 +2,11 @@
   "name": "desafioservidores",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
+  "engines":{"node": "16.X"},
   "scripts": {
     "dev": "nodemon server.js",
+    "start": "server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

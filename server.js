@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const fs = require ('fs')
 
-const files = './files/products.json'
+const productsFile = './files/products.json'
 
 app.get('/', (req, res) =>{
     res.send({msj:"aprendiendo Express"})
@@ -10,12 +10,12 @@ app.get('/', (req, res) =>{
 
 app.get('/products', (req, res) =>{
     
-    fs.readFile('./files/products.json', (error) => {
+    fs.readFile(productsFile, (error) => {
         if (error){
             console.log (`Lo sentimos ha habido un error!!!.
             El archivo a sido renombrado, o no Existe`)
         } else {
-            const fileContent = fs.readFileSync('./files/products.json', 'utf-8');
+            const fileContent = fs.readFileSync(productsFile, 'utf-8');
             const productsList = JSON.parse(fileContent);
 
             let {products} = productsList;           
@@ -27,12 +27,12 @@ app.get('/products', (req, res) =>{
 
 app.get('/productRandom', (req, res) => {
     
-    fs.readFile('./files/products.json', (error) => {
+    fs.readFile(productsFile, (error) => {
         if (error){
             console.log (`Lo sentimos ha habido un error!!!.
             El archivo a sido renombrado, o no Existe`)
         } else {
-            const fileContent = fs.readFileSync('./files/products.json', 'utf-8');
+            const fileContent = fs.readFileSync(productsFile, 'utf-8');
             const productsList = JSON.parse(fileContent);
 
             let {products} = productsList;
