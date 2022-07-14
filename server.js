@@ -2,27 +2,40 @@ const express = require("express");
 const app = express();
 const fs = require ('fs')
 
-const productsFile = './files/products.json'
+const file = './files/products.json'
+
+class Container {
+    constructor (productsList, fileJson = file) {
+        this.productsList = productsList;
+        this.fileJson = fileJson;
+    }
+
+    getAll(productsArray){
+        async function read(){
+          try{
+            const fileContent = await fs.promises.readFile('./files/products.json', 'utf-8');
+            
+            const productsList = JSON.parse(fileContent);
+            let {products} = productsList;
+            
+            console.log (products);
+          
+        } catch (err) {
+            console.log ('lo setimos a habido un error', err);
+          };
+        };
+        
+        read();
+    };
+};
 
 app.get('/', (req, res) =>{
     res.send({msj:"aprendiendo Express"})
 });
 
 app.get('/products', (req, res) =>{
-    
-    fs.readFile(productsFile, (error) => {
-        if (error){
-            console.log (`Lo sentimos ha habido un error!!!.
-            El archivo a sido renombrado, o no Existe`)
-        } else {
-            const fileContent = fs.readFileSync(productsFile, 'utf-8');
-            const productsList = JSON.parse(fileContent);
-
-            let {products} = productsList;           
-            
-            res.send(products)
-        };
-    });
+    const data = new Container ("./files/products.json")
+    res.send(data.getAll())
 });
 
 app.get('/productRandom', (req, res) => {
