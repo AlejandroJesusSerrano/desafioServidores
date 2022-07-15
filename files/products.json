@@ -1,29 +1,32 @@
-{
-    "products": [
+    [
         {
             "title": "Spider Man",
             "price": 127000,
             "thumbnail": "http://www.hottoys.com.hk/photos/aUQy/PNdR9g8bjptL3JuZWC90UznY14yErCB23z05.jpg?1656947449233",
             "id": 1
         },
+
         {
             "title": "Batman",
             "price": 127000,
             "thumbnail": "https://i.pinimg.com/564x/60/c6/ae/60c6aed75f5b94fb26feff6bc764970c.jpg",
             "id": 2
         },
+
         {
             "title": "Iron Man",
             "price": 129000,
             "thumbnail": "https://i.pinimg.com/564x/49/ba/6e/49ba6e71cfe66941d1936a8abb4beaad.jpg",
             "id": 3
         },
+
         {
             "title": "Super man",
             "price": 130000,
             "thumbnail": "https://i0.wp.com/www.supermanhomepage.com/clickandbuilds/SupermanHomepage/wp-content/uploads/2021/03/knightmare-batman-and-superman_dc-comics_gallery_605385b18c193.jpg?fit=692%2C1000&ssl=1",
             "id": 4
         },
+
         {
             "title": "Black Panther",
             "price": 130000,
@@ -31,4 +34,3 @@
             "id": 5
         }
     ]
-}
