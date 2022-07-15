@@ -22,38 +22,27 @@ class Container {
             
             };
         };
-        // const productsList = JSON.parse(fileContent);
-        // let {products} = productsList;
-        // console.log(products)
-        // return products
+        
 
     getRandom = async() =>{
          try{
-            await fs.promises.readFile(file, 'utf-8')
-            //  let product = fs.readFile(file, 'utf-8');
-            .then (product => {
-                let randomObject = JSON.parse(product)//[Math.floor(Math.random() * product.length)];
-                let random = Math.floor(Math.random()*randomObject.length);
-                console.log(randomObject[random]) //esto si muestra por consola
-                return randomObject[random] // no lo puedo ver en el navegador
-            })
-        } catch (error) { 
-            console.log (`Lo sentimas a habido un error`, error)
-        }
+            const data  = await fs.promises.readFile(file, 'utf-8')
+            console.log(data)
+            const products = JSON.parse(data)
+            console.log(products)
+            const random = await (Math.floor(Math.random() * (products.length)+1)) //  let product = fs.readFile(file, 'utf-8');
+            if (random <= products.length) {
+                const foundProduct = products.filter((prod) => prod.id === random)
+                console.log (random)
+                console.log(foundProduct)
+                return foundProduct
+                
+            };
+        } catch (error) {
+            console.log ('Lo sentimos ha habido un error', error)
+        };
     };
-// else {
-//             const fileContent = fs.readFileSync('./files/products.json', 'utf-8');
-//             const productsList = JSON.parse(fileContent);
-
-//             let {products} = productsList;
-
-//             
-
-//             res.send(randomObject)
-//         };
-//     });
-// });
-}
+};
 
 app.get('/', (req, res) =>{
     res.send({msj:"aprendiendo Express"})
@@ -66,7 +55,7 @@ app.get('/products', (req, res) =>{
 
 app.get('/productRandom', (req, res) =>{
     const data = new Container ("./files/products.json")
-    res.send(data.getRandom())//.then((products) => res.send(JSON.parse(product)))
+    data.getRandom().then((products) => res.send(products))//.then((products) => res.send(JSON.parse(product)))
 });
 // app.get('/productRandom', (req, res) => {
     
